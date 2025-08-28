@@ -1,0 +1,6 @@
+
+
+1. Integrate yugabyte postgresDB with this setup and use gorm and sqlc
+2. Integrate kafka for notification and updating db in postgresDB
+3. Add login and JWT authentication
+4. Add TLS 
