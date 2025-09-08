@@ -13,6 +13,8 @@ import (
 
 var Classes = make(map[string]models.Class, 0)
 
+var _ Handler = new(classHandler)
+
 type classHandler struct {
 	Handler
 	config config.Config

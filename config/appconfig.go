@@ -7,7 +7,18 @@ type Config struct {
 }
 
 func Load() *Config {
-	config := &Config{}
-	
+	config := &Config{
+		Port:        "8080",
+		CacheConfig: CacheConfig{},
+		DBConfigOptions: DBConfigOptions{
+			Host:         "localhost",
+			Username:     "user",
+			Password:     "",
+			DBName:       "gym",
+			DBToUse:      "mysql",
+			IsLogEnabled: true,
+		},
+	}
+
 	return config
 }
