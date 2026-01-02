@@ -1,0 +1,18 @@
+
+services:
+  gym-mariadb:
+    image: mariadb:latest   # use a stable version
+    container_name: gym-mariadb
+    hostname: gym-mariadb
+    environment:
+      MARIADB_DATABASE: gym
+      MARIADB_ROOT_PASSWORD: rootpassword
+      MARIADB_USER: user
+      MARIADB_PASSWORD: newpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - gym_mariadb_data:/var/lib/mysql
+
+volumes:
+  gym_mariadb_data:

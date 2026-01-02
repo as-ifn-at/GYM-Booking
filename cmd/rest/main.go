@@ -5,7 +5,8 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/as-ifn-at/REST/internal/config"
+	"github.com/as-ifn-at/REST/config"
+	"github.com/as-ifn-at/REST/internal/db/gormdbwrapper"
 	"github.com/as-ifn-at/REST/internal/routes"
 	"github.com/rs/zerolog"
 )
@@ -16,7 +17,12 @@ func main() {
 	logger = logger.Output(zerolog.ConsoleWriter{Out: os.Stderr})
 
 	config := config.Load()
-	router := routes.NewRouter(config, logger).SetRouters()
+
+	dbWrapper, err := gormdbwrapper.NewDBWrapper(logger, config.DBConfigOptions, config.CacheConfig)
+	if err != nil {
+		panic(err.Error())
+	}
+	router := routes.NewRouter(config, logger, dbWrapper).SetRouters()
 	listenPort := fmt.Sprintf(":%v", config.Port)
 	httpServer := &http.Server{
 		Addr:    listenPort,

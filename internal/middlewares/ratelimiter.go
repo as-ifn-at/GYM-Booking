@@ -9,6 +9,7 @@ import (
 	"golang.org/x/time/rate"
 )
 
+// Token bucket
 func RateLimit() gin.HandlerFunc {
 
 	limiter := rate.NewLimiter(per(time.Second, common.MaxNoOfRequestAllowed), common.MaxNoOfRequestAllowed)

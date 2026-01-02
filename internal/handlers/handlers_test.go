@@ -9,7 +9,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/as-ifn-at/REST/internal/config"
+	"github.com/as-ifn-at/REST/config"
 	"github.com/as-ifn-at/REST/models"
 	"github.com/gin-gonic/gin"
 	. "github.com/onsi/ginkgo/v2"
